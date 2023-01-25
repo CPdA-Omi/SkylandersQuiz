@@ -5,7 +5,7 @@
 #include "enum.hpp"
 
 class Skylander{
-public:
+private:
 	std::list<std::string> nom;
 	Element elem;
 	std::vector<Arme> arme;
@@ -15,6 +15,7 @@ public:
 	bool unitElement;
 	bool vol;
 	Serie serie;
+public:
 	Skylander(std::list<std::string> nom, Element elem, std::vector<Arme> a, unsigned int jeu, Stat st, std::string laHint, bool uniElem, bool vol, Serie s);
 	Skylander(std::list<std::string> nom, Element elem, std::vector<Arme> a, unsigned int jeu, Stat st, std::string laHint, bool uniElem, bool vol);
 	Skylander(std::list<std::string> nom, Element elem, std::vector<Arme> a, unsigned int jeu, Stat st, std::string laHint, bool uniElem, Serie s);
