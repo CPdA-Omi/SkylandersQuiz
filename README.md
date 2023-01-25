@@ -1,6 +1,6 @@
 # SkylandersQuiz
 ## It's a quiz to find the names of a skylander from them features
-### The program is already complied
+### The program is already compiled
 
 To run the program, enter `./SkylandersQuiz/bin/exe`.
 
