@@ -16,6 +16,6 @@ int algoRechercheCritMult(std::vector<std::vector<Skylander*>> data, std::vector
 //unsigned int doublebitbool(unsigned int iBool);
 //unsigned int multChoix(std::vector<std::vector<bool>> rows, int nbRow, const std::string& subject, const std::string& in, const std::string& out);
 
-std::string afficherNomJeu(int nb);
+std::string displayGameName(int nb);
 
 #endif

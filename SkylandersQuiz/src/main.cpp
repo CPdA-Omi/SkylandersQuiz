@@ -110,56 +110,52 @@ int main(){
 			cout << "\tParties jouées : " << parties << endl
 			<< "\tSkylanders trouvés : " << trouves << endl;
 		retMen=menu(games);
-		switch(retMen){
-			case 1:
-			case 2:
-			case 3:
-			case 4:
-			case 5:
-			case 6:
-			case 7:
-				games[retMen-1]=!games[retMen-1];
-				break;
-			case 10:
-				recherche(lesSkylanders);
-				break;
-			case 9:
-				parties++;
-				randomNumber=rand()%3;
-				while(!games[randomNumber])
+		if(retMen>0 && retMen<8){
+			games[retMen-1]=!games[retMen-1];
+		}
+		else {
+			switch(retMen){
+				case 10:
+					recherche(lesSkylanders);
+					break;
+				case 9:
+					parties++;
 					randomNumber=rand()%3;
+					while(!games[randomNumber])
+						randomNumber=rand()%3;
 
-				switch(randomNumber){
-					case 0:
-						guest=spyros[rand()%spyros.size()];
-						break;
-					case 1:
-						guest=giants[rand()%giants.size()];
-						break;
-					case 2:
-						guest=swapForce[rand()%swapForce.size()];
-						break;
-				}// switch(randomNumber)
+					switch(randomNumber){
+						case 0:
+							guest=spyros[rand()%spyros.size()];
+							break;
+						case 1:
+							guest=giants[rand()%giants.size()];
+							break;
+						case 2:
+							guest=swapForce[rand()%swapForce.size()];
+							break;
+					}// switch(randomNumber)
 
-				if(godMod){
-					cout << guest->nom.front() << endl;
-				}
-				var=game(guest);
-				score+=var;
-				if(var!=0)
-					trouves+=1;
-				cout << endl;
-				guest->afficherInfo();
-				cout << "\n\tAppuyez sur Entrée pour continuer... ";
-				getline(cin, sTrash);
-				break; // jouer
-		}// switch(retMen)
+					if(godMod){
+						cout << guest->getNames().front() << endl;
+					}
+					var=game(guest);
+					score+=var;
+					if(var!=0)
+						trouves+=1;
+					cout << endl;
+					guest->displayInfos();
+					cout << "\n\tAppuyez sur Entrée pour continuer... ";
+					getline(cin, sTrash);
+					break; // jouer
+			}// switch(retMen)
+		}
 	}
 	for(vector<Skylander*> lesSky : lesSkylanders){
 		for(Skylander* sky : lesSky){
 			if(godMod){
 				cpt++;
-				cout << "Delete\t" << cpt << " :\t" << sky->nom.front() << endl;
+				cout << "Delete\t" << cpt << " :\t" << sky->getNames().front() << endl;
 			}
 			delete sky;
 		}

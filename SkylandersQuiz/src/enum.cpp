@@ -93,52 +93,52 @@ ostream& operator<<(ostream& os, const Element& elem){
 
 }// operator Element
 
-std::ostream& operator<<(std::ostream& os, const Arme& a){
+std::ostream& operator<<(std::ostream& os, const Weapon& a){
 
 	switch(a){
-		case Arme::Self:
+		case Weapon::Self:
 			os << "Moi-même";
 			break;
-		case Arme::Poings:
+		case Weapon::Poings:
 			os << "Poings";
 			break;
-		case Arme::Epee:
+		case Weapon::Epee:
 			os << "Épée";
 			break;
-		case Arme::Bouclier:
+		case Weapon::Bouclier:
 			os << "Bouclier";
 			break;
-		case Arme::Hache:
+		case Weapon::Hache:
 			os << "Hache";
 			break;
-		case Arme::Marteaux:
+		case Weapon::Marteaux:
 			os << "Marteaux/Masse";
 			break;
-		case Arme::Sceptre:
+		case Weapon::Sceptre:
 			os << "Sceptre";
 			break;
-		case Arme::Originale:
+		case Weapon::Originale:
 			os << "Originale";
 			break;
-		case Arme::Projectiles:
+		case Weapon::Projectiles:
 			os << "Projectiles";
 			break;
-		case Arme::Zone:
+		case Weapon::Zone:
 			os << "Zone";
 			break;
-		case Arme::Feu:
+		case Weapon::Feu:
 			os << "Feu";
 			break;
-		case Arme::Foudre:
+		case Weapon::Foudre:
 			os << "Foudre";
 			break;
-		case Arme::Plasma:
+		case Weapon::Plasma:
 			os << "Plasma";
 			break;
-		case Arme::Solide:
+		case Weapon::Solide:
 			os << "Solide";
 			break;
-		case Arme::Inconnu:
+		case Weapon::Inconnu:
 			os << "Inconnu";
 			break;
 		default:
@@ -147,7 +147,7 @@ std::ostream& operator<<(std::ostream& os, const Arme& a){
 	}// switch(a)
 	return os;
 
-}// operator Arme
+}// operator Weapon
 
 ostream& operator<<(ostream& os, const Stat& st){
 

@@ -57,12 +57,12 @@ void rechercheNom(vector<vector<Skylander*>> data){
 	getline(cin, saisie);
 	for(vector<Skylander*> skyVect : data){
 		for(Skylander* sky : skyVect){
-			for(string s : sky->nom){
+			for(string s : sky->getNames()){
 				if(s==saisie){
-					sky->afficherInfoDetails();
+					sky->displayDetailedInfos();
 					if(cpt==0)
-						first=sky->jeu;
-					last=sky->jeu;
+						first=sky->getGameNumber();
+					last=sky->getGameNumber();
 					cpt++;
 					break;
 				}
@@ -73,8 +73,8 @@ void rechercheNom(vector<vector<Skylander*>> data){
 		cout << "\t+=======================================================+\n\t|" << endl
 		<< "\t|\tRésultats : " << cpt << endl;
 		if(cpt>1 && first!=last){
-			cout << "\t|\tPremière apparition : Skylanders " << afficherNomJeu(first) << endl;
-			cout << "\t|\tDernière apparition : Skylanders " << afficherNomJeu(last) << endl;
+			cout << "\t|\tPremière apparition : Skylanders " << displayGameName(first) << endl;
+			cout << "\t|\tDernière apparition : Skylanders " << displayGameName(last) << endl;
 		}
 		cout << "\t|\n\t+=======================================================+" << endl;
 	}
@@ -134,8 +134,8 @@ void rechercheCritere(vector<vector<Skylander*>> data){
 				system("clear");
 				for(vector<Skylander*> skyVect : data){
 					for(Skylander* sky : skyVect){
-						if(sky->elem==Element(var-1)){
-							sky->afficherInfoDetails();
+						if(sky->getElement()==Element(var-1)){
+							sky->displayDetailedInfos();
 							cpt++;
 						}
 					}
@@ -154,9 +154,9 @@ void rechercheCritere(vector<vector<Skylander*>> data){
 				system("clear");
 				for(vector<Skylander*> skyVect : data){
 					for(Skylander* sky : skyVect){
-						for(Arme a : sky->arme){
-							if(a==Arme(var-1)){
-								sky->afficherInfoDetails();
+						for(Weapon w : sky->getWeapons()){
+							if(w==Weapon(var-1)){
+								sky->displayDetailedInfos();
 								cpt++;
 								break;
 							}
@@ -173,8 +173,8 @@ void rechercheCritere(vector<vector<Skylander*>> data){
 				system("clear");
 				for(vector<Skylander*> skyVect : data){
 					for(Skylander* sky : skyVect){
-						if(sky->pointFort==Stat(var-1)){
-							sky->afficherInfoDetails();
+						if(sky->getStrength()==Stat(var-1)){
+							sky->displayDetailedInfos();
 							cpt++;
 						}
 					}
@@ -193,8 +193,8 @@ void rechercheCritere(vector<vector<Skylander*>> data){
 					bVar=false;
 				for(vector<Skylander*> skyVect : data){
 					for(Skylander* sky : skyVect){
-						if(sky->unitElement==bVar){
-							sky->afficherInfoDetails();
+						if(sky->isMadeOfThemElement()==bVar){
+							sky->displayDetailedInfos();
 							cpt++;
 						}
 					}
@@ -213,8 +213,8 @@ void rechercheCritere(vector<vector<Skylander*>> data){
 					bVar=false;
 				for(vector<Skylander*> skyVect : data){
 					for(Skylander* sky : skyVect){
-						if(sky->vol==bVar){
-							sky->afficherInfoDetails();
+						if(sky->canFly()==bVar){
+							sky->displayDetailedInfos();
 							cpt++;
 						}
 					}
@@ -231,8 +231,8 @@ void rechercheCritere(vector<vector<Skylander*>> data){
 				system("clear");
 				for(vector<Skylander*> skyVect : data){
 					for(Skylander* sky : skyVect){
-						if(sky->serie==Serie(var-1)){
-							sky->afficherInfoDetails();
+						if(sky->getSeries()==Serie(var-1)){
+							sky->displayDetailedInfos();
 							cpt++;
 						}
 					}
@@ -716,7 +716,7 @@ int algoRechercheCritMult(vector<vector<Skylander*>> data, vector<vector<bool>> 
 	return cptSky;
 }
 
-string afficherNomJeu(int nb){
+string displayGameName(int nb){
 	switch(nb){
 		case 1:
 			return "Spyro's Adventure";

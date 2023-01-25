@@ -3,45 +3,56 @@
 
 using namespace std;
 
-Skylander::Skylander(list<string> nom, Element elem, vector<Arme> a, unsigned int jeu, Stat st, string laHint, bool uniElem, bool vol, Serie s)
-:nom{nom}, elem{elem}, arme{a}, jeu{jeu}, pointFort{st}, lastHint{laHint}, unitElement{uniElem}, vol{vol}, serie{s} {}
+Skylander::Skylander(list<string> names, Element element, vector<Weapon> weapons, unsigned int gameNumber, Stat strength, string lastHint, bool elementalBeast, bool flyingBeast, Serie series)
+:names{names}, element{element}, weapons{weapons}, gameNumber{gameNumber}, strength{strength}, lastHint{lastHint}, elementalBeast{elementalBeast}, flyingBeast{flyingBeast}, series{series} {}
 
-Skylander::Skylander(list<string> nom, Element elem, vector<Arme> a, unsigned int jeu, Stat st, string laHint, bool uniElem, bool vol)
-:Skylander(nom, elem, a, jeu, st, laHint, uniElem, vol, Serie::Un) {}
+Skylander::Skylander(list<string> names, Element element, vector<Weapon> weapons, unsigned int gameNumber, Stat strength, string lastHint, bool elementalBeast, bool flyingBeast)
+:Skylander(names, element, weapons, gameNumber, strength, lastHint, elementalBeast, flyingBeast, Serie::Un) {}
 
-Skylander::Skylander(list<string> nom, Element elem, vector<Arme> a, unsigned int jeu, Stat st, string laHint, bool uniElem, Serie s)
-:Skylander(nom, elem, a, jeu, st, laHint, uniElem, false, s) {}
+Skylander::Skylander(list<string> names, Element element, vector<Weapon> weapons, unsigned int gameNumber, Stat strength, string lastHint, bool elementalBeast, Serie series)
+:Skylander(names, element, weapons, gameNumber, strength, lastHint, elementalBeast, false, series) {}
 
-Skylander::Skylander(list<string> nom, Element elem, vector<Arme> a, unsigned int jeu, Stat st, string laHint, bool uniElem)
-:Skylander(nom, elem, a, jeu, st, laHint, uniElem, false, Serie::Un) {}
+Skylander::Skylander(list<string> names, Element element, vector<Weapon> weapons, unsigned int gameNumber, Stat strength, string lastHint, bool elementalBeast)
+:Skylander(names, element, weapons, gameNumber, strength, lastHint, elementalBeast, false, Serie::Un) {}
 
-bool Skylander::nomSky(string saisie) const{
-	for(string s : nom)
+list<std::string> Skylander::getNames() const{ return names; }
+Element Skylander::getElement() const{ return element; }
+vector<Weapon> Skylander::getWeapons() const{ return weapons; }
+Weapon Skylander::getGivenWeapon(size_t index) const{ return weapons[index]; }
+int Skylander::getGameNumber() const{ return gameNumber; }
+Stat Skylander::getStrength() const{ return strength; }
+string Skylander::getLastHint() const{ return lastHint; }
+bool Skylander::isMadeOfThemElement() const{return elementalBeast; }
+bool Skylander::canFly() const{ return flyingBeast; }
+Serie Skylander::getSeries() const{ return series; }
+
+bool Skylander::isNameMatches(string saisie) const{
+	for(string s : names)
 		if(s==saisie)
 			return true;
 	return false;
 }
 
-void Skylander::afficherInfo() const{
+void Skylander::displayInfos() const{
 	unsigned int cptNoms=0;
 	cout << "\n\t";
-	cout << nom.front() << endl;
+	cout << names.front() << endl;
 	cout << "    -----------------------------------------------------" << endl;
-	cout << "\tOrthographes acceptables (" << nom.size() << ") :" << endl;
-	for (string s : nom){
+	cout << "\tOrthographes acceptables (" << names.size() << ") :" << endl;
+	for (string s : names){
 		cout << "\t-\t" << s;
 		cptNoms++;
-		if(cptNoms>1 && (s!=nom.back() || nom.size()%2!=0)){
+		if(cptNoms>1 && (s!=names.back() || names.size()%2!=0)){
 			cptNoms=0;
 			cout << endl;
 		}
 	}
 	cout << endl;
-	cout << "\n\tÉlément : " << elem << endl
-	<< "\tSérie : " << serie << endl
-	<< "\tStatistique dominante : " << pointFort << endl
+	cout << "\n\tÉlément : " << element << endl
+	<< "\tSérie : " << series << endl
+	<< "\tStatistique dominante : " << strength << endl
 	<< "\tJeu d'origine : Skylanders ";
-	switch(jeu){
+	switch(gameNumber){
 		case 1:
 			cout << "Spyro's Adventure" << endl;
 			break;
@@ -64,26 +75,26 @@ void Skylander::afficherInfo() const{
 		cout << "    -----------------------------------------------------" << endl;
 }
 
-void Skylander::afficherInfoDetails() const{
+void Skylander::displayDetailedInfos() const{
 	unsigned int cptArmes=0;
-	afficherInfo();
+	displayInfos();
 	cout << "\tCaractéristiques armes :" << endl;
-	for (Arme a : arme){
-		cout << "\t-\t" << a;
+	for (Weapon w : weapons){
+		cout << "\t-\t" << w;
 		cptArmes++;
-		if(cptArmes>1 && (a!=arme.back() || arme.size()%2!=0)){
+		if(cptArmes>1 && (w!=weapons.back() || weapons.size()%2!=0)){
 			cptArmes=0;
 			cout << endl;
 		}
 	}
 	cout << "\n\n\tPeut voler : ";
-	if(vol)
+	if(canFly())
 		cout << "Oui" << endl;
 	else
 		cout << "Non" << endl;
 	
 	cout << "\tNe fait qu'un avec son élément : ";
-	if(unitElement)
+	if(isMadeOfThemElement())
 		cout << "Oui" << endl;
 	else
 		cout << "Non" << endl;

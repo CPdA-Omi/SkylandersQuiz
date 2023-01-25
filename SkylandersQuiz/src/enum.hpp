@@ -5,8 +5,8 @@
 enum class Element{Magie, Terre, Eau, Feu, Tech, MoVi, Air, Vie, Lum, Ten};
 std::ostream& operator<<(std::ostream& os, const Element& elem);
 
-enum class Arme{Self, Poings, Epee, Bouclier, Hache, Marteaux, Sceptre, Originale, Projectiles, Zone, Feu, Foudre, Plasma, Solide, Inconnu};
-std::ostream& operator<<(std::ostream& os, const Arme& a);
+enum class Weapon{Self, Poings, Epee, Bouclier, Hache, Marteaux, Sceptre, Originale, Projectiles, Zone, Feu, Foudre, Plasma, Solide, Inconnu};
+std::ostream& operator<<(std::ostream& os, const Weapon& a);
 
 enum class Stat{Force, Defense, Agilite, Chance};
 std::ostream& operator<<(std::ostream& os, const Stat& st);
