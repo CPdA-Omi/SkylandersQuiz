@@ -1,6 +1,8 @@
 # SkylandersQuiz
 ## It's a quiz to find the names of a skylander from them features
 
+To run the program, enter `./SkylandersQuiz/bin/exe`.
+
 * If you want to play, the option "*Jouer*" starting the game (9)
 * The skylander to guess is randomly taken between the active categories in the menu
 * More you need evidences to find the correct skylander, less points you gain
@@ -10,4 +12,4 @@
 * To quit, press the "*Sortir*" option (9)
 
 ---
-# Unfortinately, all of the system messages are in french as the same as the guide
+## Unfortinately, all of the system messages are in french as the same as the guide
